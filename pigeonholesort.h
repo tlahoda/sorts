@@ -1,5 +1,5 @@
 /**
- * \file countingsort.h, Contains a counting sort implementation.
+ * \file pigeonholesort.h, Contains a pigeonhole sort implementation.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
@@ -21,8 +21,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-#ifndef SORT_COUNTINGSORT_H
-#define SORT_COUNTINGSORT_H
+#ifndef SORT_PIGEONHOLESORT_H
+#define SORT_PIGEONHOLESORT_H
 
 #include <vector>
 #include <map>
@@ -33,10 +33,7 @@ namespace sort {
 
   /**
    * Sorts the elements from begin to end in ascending order maintaining stability
-   * and splices the result onto the output list. This is slightly different from
-   * your normal counting sort. The difference being it doesn't directly count the
-   * elements, instead it collects the elements in lists then joins those lists
-   * together.
+   * and splices the result onto the output list. 
    *
    * Complexity is O(k + n) where k is the number of unique keys and n is the number
    * of elements to sort.
@@ -54,7 +51,7 @@ namespace sort {
    * \return void.
    */
   template<typename inIterator, typename out>
-  void countingsort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKey) {
+  void pigeonholesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKey) {
     vector<list<typename inIterator::value_type>> bucket (maxKey);
 
     for (inIterator cur = begin; cur != end; ++cur)
@@ -62,8 +59,8 @@ namespace sort {
 
     for (auto cur = bucket.begin (), end = bucket.end (); cur != end; ++cur)
       o.splice (o.end (), *cur);
-  }; //countingsort
+  }; //pigeonholesort
 }; //sort
 
-#endif //SORT_COUNTINGSORT_H
+#endif //SORT_PIGEONHOLRSORT_H
 
