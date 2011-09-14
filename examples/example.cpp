@@ -28,13 +28,13 @@
 #include <algorithm>
 
 #include "radixsort.h"
-#include "countingsort.h"
+#include "pigeonholesort.h"
 
 int main (int argc, char** argv) {
   using namespace std;
   using namespace sort;
 
-  cout << "radixsort:" << endl;
+  cout << "radix sort:" << endl;
   list<pair<string, string>> l;
   l.push_back (make_pair ("30", "3"));
   l.push_back (make_pair ("20", "2a"));
@@ -52,7 +52,7 @@ int main (int argc, char** argv) {
   for (auto cur = res.begin (), end = res.end (); cur != end; ++cur)
     cout << cur->second << endl;
 
-  cout << endl << "countingsort:" << endl;
+  cout << endl << "pigeon hole sort:" << endl;
   list<pair<int, string>> l2;
   l2.push_back (make_pair (3, "3"));
   l2.push_back (make_pair (2, "2a"));
@@ -66,7 +66,7 @@ int main (int argc, char** argv) {
   l2.push_back (make_pair (6, "6b"));
 
   list<pair<int, string>> res2;
-  countingsort (l2.begin (), l2.end (), res2, 6);
+  pigeonholesort (l2.begin (), l2.end (), res2, 6);
   for (auto cur = res2.begin (), end = res2.end (); cur != end; ++cur)
     cout << cur->second << endl;
   
