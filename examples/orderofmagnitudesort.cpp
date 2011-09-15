@@ -1,5 +1,5 @@
 /**
- * \file radixsort.cpp, Contains an example of using radixsort.
+ * \file orderofmagnitudesort.cpp, Contains an example of using orderofmagnitudesort.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
@@ -25,7 +25,7 @@
 #include <list>
 #include <iostream>
 
-#include "radixsort.h"
+#include "orderofmagnitudesort.h"
 
 int main (int argc, char** argv) {
   using namespace std;
@@ -44,7 +44,7 @@ int main (int argc, char** argv) {
   l.push_back (make_pair ("600", "6b"));
 
   list<pair<string, string>> res;
-  radixsort (l.begin (), l.end (), res, 3);
+  orderofmagnitudesort (l.begin (), l.end (), res, 3);
   for (auto cur = res.begin (), end = res.end (); cur != end; ++cur)
     cout << cur->second << endl;
   
