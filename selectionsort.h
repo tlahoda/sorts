@@ -32,8 +32,7 @@ namespace sort {
 
   /**
    * Sorts the elements in-place from begin to end in ascending order
-   * maintaining stability. Passing in reverse_iterators will sort in
-   * descending order.
+   * maintaining stability. 
    *
    * Complexity is O(n^2) where n is the number of elements to sort.
    *
