@@ -50,7 +50,7 @@ namespace sort {
       swap (*min_element (cur, end), *cur);
       ++cur;
     }
-  };
+  }; //selectionsort
 }; //sort
 
 #endif //SORT_SELECTIONSORT_H
