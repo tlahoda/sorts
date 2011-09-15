@@ -46,8 +46,8 @@ namespace sort {
    */
   template<typename iterator>
   void bubblesort (const iterator& begin, const iterator& end) {
-    bool notSorted = false;
-    do {
+    bool notSorted = true;
+    while (notSorted) {
       notSorted = false;
       auto cur = const_cast<iterator&> (begin);
       auto adjEnd = --const_cast<iterator&> (end);
@@ -58,7 +58,7 @@ namespace sort {
           notSorted = true;
         }
       }
-    } while (notSorted);
+    }
   }; //bubblesort
 }; //sort
 
