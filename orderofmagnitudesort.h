@@ -1,5 +1,5 @@
 /**
- * \file radixsort.h, Contains a radix sort implementation.
+ * \file orderofmagnitudesort.h, Contains a order of magnitude sort implementation.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
@@ -21,8 +21,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-#ifndef SORT_RADIXSORT_H
-#define SORT_RADIXSORT_H
+#ifndef SORT_ORDEROFMAGNITUDESORT_H
+#define SORT_ORDEROFMAGNITUDESORT_H
 
 #include <vector>
 #include <map>
@@ -52,7 +52,7 @@ namespace sort {
    * \return void.
    */
   template<typename inIterator, typename out>
-  void radixsort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
+  void orderofmagnitudesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
     vector<map<string, list<typename inIterator::value_type>>> buckets (maxKeyLength);
 
     for (inIterator cur = begin; cur != end; ++cur)
@@ -61,8 +61,8 @@ namespace sort {
     for (auto d = buckets.begin (), dEnd = buckets.end (); d != dEnd; ++d)
       for (auto p = d->begin (), pEnd = d->end (); p != pEnd; ++p)
         o.splice (o.end (), p->second);
-  }; //radixsort
+  }; //orderofmagnitudesort
 }; //sort
 
-#endif //SORT_RADIXSORT_H
+#endif //SORT_ORDEROFMAGNITUDESORT_H
 
