@@ -40,7 +40,7 @@ namespace sort {
    *
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
-   * \param shrink The shirnk factor.
+   * \param shrink The shrink factor.
    *
    * \return void.
    */
