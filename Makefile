@@ -1,9 +1,25 @@
-all: example
+all: bubblesort combsort pigeonholesort radixsort selectionsort
 
-example: examples/example.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/example.cpp -I. -o example
-	strip example 
+bubblesort: examples/bubblesort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/bubblesort.cpp -I. -o bubblesort
+	strip bubblesort
+
+combsort: examples/combsort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/combsort.cpp -I. -o combsort
+	strip combsort
+
+pigeonholesort: examples/pigeonholesort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/pigeonholesort.cpp -I. -o pigeonholesort
+	strip pigeonholesort
+
+radixsort: examples/radixsort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/radixsort.cpp -I. -o radixsort
+	strip radixsort
+
+selectionsort: examples/selectionsort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/selectionsort.cpp -I. -o selectionsort
+	strip selectionsort
 
 clean:
-	rm -f example
+	rm -f bubblesort combsort pigeonholesort radixsort selectionsort
 
