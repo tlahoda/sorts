@@ -36,6 +36,9 @@ namespace sort {
    * Typical, best, and worst case complexities are O(n log n) where n is the
    * number of elements to sort.
    *
+   * combsort can be made into bubblesort by passing in a shrink of 
+   * distance (begin, end).
+   *
    * \tparam iterator The type of the iterators.
    *
    * \param begin The beginning of the elements.
