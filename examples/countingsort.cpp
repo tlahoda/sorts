@@ -1,5 +1,5 @@
 /**
- * \file pigeonholesort.cpp, Contains an example of using pigeonholesort.
+ * \file countingsort.cpp, Contains an example of using countingsort.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *

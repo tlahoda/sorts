@@ -1,5 +1,5 @@
 /**
- * \file countingsort.cpp, Contains a counting sort implementation.
+ * \file countingsort.h, Contains a counting sort implementation.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
@@ -42,7 +42,7 @@ namespace sort {
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
    * \param o The output container.
-   * \param maxKeyLength The maximum length a key can have.
+   * \param maxKey The maximum key.
    *
    * \return void.
    */
