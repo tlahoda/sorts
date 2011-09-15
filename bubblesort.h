@@ -27,6 +27,8 @@
 #include <algorithm>
 
 namespace sort {
+  using namespace std;
+
   /**
    * Sorts the elements in-place from begin to end in ascending order
    * maintaining stability. 
