@@ -24,7 +24,6 @@
 #ifndef SORT_SELECTIONSORT_H
 #define SORT_SELECTIONSORT_H
 
-#include <iterator>
 #include <algorithm>
 
 namespace sort {
