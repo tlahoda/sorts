@@ -48,11 +48,14 @@ namespace sort {
   void bubblesort (const iterator& begin, const iterator& end) {
     bool notSorted = true;
     auto adjEnd = --const_cast<iterator&> (end);
+
     while (notSorted) {
       notSorted = false;
       auto cur = const_cast<iterator&> (begin);
+
       while (cur != adjEnd) {
         auto prev = cur++;
+
         if (*prev > *cur) {
           swap (*prev, *cur);
           notSorted = true;
