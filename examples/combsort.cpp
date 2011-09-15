@@ -22,7 +22,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 #include <string>
-#include <list>
+#include <vector>
 #include <iostream>
 
 #include "combsort.h"
@@ -31,20 +31,20 @@ int main (int argc, char** argv) {
   using namespace std;
   using namespace sort;
 
-  list<int> l;
-  l.push_back (30);
-  l.push_back (20);
-  l.push_back (600);
-  l.push_back (1);
-  l.push_back (20);
-  l.push_back (600);
-  l.push_back (500);
-  l.push_back (40);
-  l.push_back (20);
-  l.push_back (600);
+  vector<int> v;
+  v.push_back (30);
+  v.push_back (20);
+  v.push_back (600);
+  v.push_back (1);
+  v.push_back (20);
+  v.push_back (600);
+  v.push_back (500);
+  v.push_back (40);
+  v.push_back (20);
+  v.push_back (600);
 
-  bubblesort (l.begin (), l.end ());
-  for (auto cur = l.begin (), end = l.end (); cur != end; ++cur)
+  combsort (v.begin (), v.end (), 1.247330950103979f);
+  for (auto cur = v.begin (), end = v.end (); cur != end; ++cur)
     cout << *cur << endl;
   
   return 0;
