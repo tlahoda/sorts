@@ -38,7 +38,8 @@ namespace sort {
    * Complexity is O(k + n) where k is the number of unique keys and n is the number
    * of elements to sort.
    *
-   * Worst case space complexity is O(n + k).
+   * Space complexity is O(k + n) where k is the maximum value of a key and n is the
+   * number of elements to be sorted.
    *
    * \tparam inIterator The type of the input iterator.
    * \tparam out The type of the output list.
