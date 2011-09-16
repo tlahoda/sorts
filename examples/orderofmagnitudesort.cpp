@@ -45,7 +45,7 @@ int main (int argc, char** argv) {
   l.push_back (make_pair (600, "6b"));
 
   list<pair<unsigned int, string>> res;
-  orderofmagnitudesort<unsigned int, IntDigitCounter> (l.begin (), l.end (), res, 3);
+  orderofmagnitudesort<unsigned int> (l.begin (), l.end (), res, 3);
   for (auto cur = res.begin (), end = res.end (); cur != end; ++cur)
     cout << cur->second << endl;
 
@@ -63,10 +63,10 @@ int main (int argc, char** argv) {
   l2.push_back (make_pair ("600", "6b"));
 
   list<pair<string, string>> res2;
-  orderofmagnitudesort<string, StringDigitCounter> (l2.begin (), l2.end (), res2, 3);
+  orderofmagnitudesort<string> (l2.begin (), l2.end (), res2, 3);
   for (auto cur = res2.begin (), end = res2.end (); cur != end; ++cur)
     cout << cur->second << endl;
-  
+
   return 0;
 };
 

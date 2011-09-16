@@ -34,32 +34,27 @@ namespace sort {
   using namespace std;
 
   /**
-   * Counts the number of digits in an unsigned int.
+   * Determines the number of digits of an integer key. This will actually return the
+   * number of digits - 1 for indexing.
+   *
+   * \param number The key for which to determine the number of digits.
+   *
+   * \return The number of digits.
    */
-  struct IntDigitCounter {
-    /**
-     * Determines the number of digits of an integer key.
-     *
-     * \param number The key for which to determine the number of digits.
-     *
-     * \return The number of digits.
-     */
-    static unsigned int count (int number) { return floor (log10 (abs (number))); };
-  };
+  template<typename KeyType>
+  unsigned int count_digits (const KeyType& key) { return 0; };
 
   /**
-   * Counts the number of digits in a string.
+   * Specialization for unsigned int.
    */
-  struct StringDigitCounter {
-    /**
-     * Determines the number of digits of a string key.
-     *
-     * \param number The key for which to determine the number of digits.
-     *
-     * \return The number of digits.
-     */
-    static unsigned int count (const string& number) { return number.size () - 1; };
-  };
+  template<>
+  unsigned int count_digits<unsigned int> (const unsigned int& key) { return floor (log10 (abs (key))); };
+
+  /**
+   * Specialization for string.
+   */
+  template<>
+  unsigned int count_digits<string> (const string& key) { return key.size () - 1; };
 
   /**
    * Sorts the elements from begin to end in ascending order maintaining stability
@@ -74,6 +69,7 @@ namespace sort {
    * Space complexity is O(k + n) where k is the number of unique keys and n is
    * the number of elements to sort.
    *
+   * \tparam keyType The type of the key.
    * \tparam inIterator The type of the input iterator.
    * \tparam out The type of the output list.
    *
@@ -84,12 +80,12 @@ namespace sort {
    *
    * \return void.
    */
-  template<typename keyType, typename DigitCounter, typename inIterator, typename out>
+  template<typename KeyType, typename inIterator, typename out>
   void orderofmagnitudesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
-    vector<map<keyType, list<typename inIterator::value_type>>> buckets (maxKeyLength);
+    vector<map<KeyType, list<typename inIterator::value_type>>> buckets (maxKeyLength);
 
     for (inIterator cur = begin; cur != end; ++cur)
-      buckets[DigitCounter::count (cur->first)][cur->first].push_back (*cur);
+      buckets[count_digits (cur->first)][cur->first].push_back (*cur);
 
     for (auto d = buckets.begin (), dEnd = buckets.end (); d != dEnd; ++d)
       for (auto p = d->begin (), pEnd = d->end (); p != pEnd; ++p)
