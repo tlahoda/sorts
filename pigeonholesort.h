@@ -27,6 +27,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <algorithm>
 
 namespace sort {
   using namespace std;
@@ -35,31 +36,33 @@ namespace sort {
    * Sorts the elements from begin to end in ascending order maintaining stability
    * and splices the result onto the output list. 
    *
-   * Complexity is O(k + n) where k is the number of unique keys and n is the number
-   * of elements to sort.
+   * Complexity is O(2k + n) where k is the number of unique keys and n is the
+   * number of elements to sort.
    *
-   * Space complexity is O(k + n) where k is the maximum value of a key and n is the
-   * number of elements to be sorted.
+   * Space complexity is O(k + n) where k is the number of unique keys and n is
+   * the number of elements to be sorted.
    *
-   * \tparam inIterator The type of the input iterator.
+   * \tparam iterator The type of the input iterator.
    * \tparam out The type of the output list.
    *
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
    * \param o The output list.
-   * \param maxKeyLength The maximum length a key can have.
+   * \param maxKey The maximum value a key can have.
    *
    * \return void.
    */
-  template<typename inIterator, typename out>
-  void pigeonholesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKey) {
-    vector<list<typename inIterator::value_type>> bucket (maxKey);
+  template<typename iterator, typename out>
+  void pigeonholesort (const iterator& begin, const iterator& end, out& o, unsigned int maxKey) {
+    vector<list<typename iterator::value_type>> buckets (maxKey);
 
-    for (inIterator cur = begin; cur != end; ++cur)
-      bucket[cur->first - 1].push_back (*cur);
+    for_each (begin, end, [&buckets] (typename iterator::value_type& ele) {
+      buckets[ele.first - 1].push_back (ele);
+    });
 
-    for (auto cur = bucket.begin (), end = bucket.end (); cur != end; ++cur)
-      o.splice (o.end (), *cur);
+    for_each (buckets.begin (), buckets.end (), [&o] (list<typename iterator::value_type>& l) {
+      o.splice (o.end (), l);
+    });
   }; //pigeonholesort
 }; //sort
 
