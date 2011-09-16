@@ -44,11 +44,8 @@ namespace sort {
    */
   template<typename iterator>
   void selectionsort (const iterator& begin, const iterator& end) {
-    iterator& cur = const_cast<iterator&> (begin);
-    while (cur != end) {
+    for (auto cur = begin; cur != end; ++cur)
       swap (*min_element (cur, end), *cur);
-      ++cur;
-    }
   }; //selectionsort
 }; //sort
 
