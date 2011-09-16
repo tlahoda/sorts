@@ -1,5 +1,5 @@
 /**
- * \file orderofmagnitudesort.cpp, Contains an example of using lsdradixsort.
+ * \file lsdradixsort.cpp, Contains an example of using lsdradixsort.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
