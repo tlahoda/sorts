@@ -60,7 +60,7 @@ namespace sort {
       pos += c;
     }
 
-    o.resize (o.size () + distance (begin, end));
+    o.resize (offset + distance (begin, end));
     for (auto cur = begin; cur != end; ++cur)
       o[counts[cur->first]++] = *cur;
 
