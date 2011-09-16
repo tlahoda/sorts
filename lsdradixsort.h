@@ -27,6 +27,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <algorithm>
 
 namespace sort {
   using namespace std;
@@ -55,24 +56,23 @@ namespace sort {
     inIterator first = begin;
     inIterator last = end;
 
-    list<typename inIterator::value_type> a;
     for (int i = maxKeyLength - 1; i >= 0; --i) {
       vector<list<typename inIterator::value_type>> buckets (radix);
 
-      for (auto cur = first; cur != last; ++cur) {
-        unsigned int keyEnd = cur->first.size ();
-        unsigned int position = maxKeyLength - i;
-        buckets[(position > keyEnd) ? 0 : cur->first[keyEnd - position] - asciiOffset].push_back (*cur);
-      }
+      unsigned int position = maxKeyLength - i;
+      for_each (first, last, [&] (typename inIterator::value_type& ele) {
+        unsigned int keyEnd = ele.first.size ();
+        buckets[(position > keyEnd) ? 0 : ele.first[keyEnd - position] - asciiOffset].push_back (ele);
+      });
 
-      a.clear ();
-      for (auto cur = buckets.begin (), end = buckets.end (); cur != end; ++cur)
-        a.splice (a.end (), *cur);
+      o.clear ();
+      for_each (buckets.begin (), buckets.end (), [&o] (list<typename inIterator::value_type>& l) {
+        o.splice (o.end (), l);
+      });
 
-      first = a.begin ();
-      last = a.end ();
+      first = o.begin ();
+      last = o.end ();
     }
-    o.splice (o.end (), a);
   }; //lsdradixsort
 }; //sort
 
