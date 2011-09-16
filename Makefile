@@ -1,4 +1,4 @@
-all: bubblesort combsort countingsort orderofmagnitudesort pigeonholesort selectionsort
+all: bubblesort combsort countingsort lsdradixsort orderofmagnitudesort pigeonholesort selectionsort
 
 bubblesort: examples/bubblesort.cpp
 	g++ -O5 -Wall -std=gnu++0x examples/bubblesort.cpp -I. -o bubblesort
@@ -11,6 +11,10 @@ combsort: examples/combsort.cpp
 countingsort: examples/countingsort.cpp
 	g++ -O5 -Wall -std=gnu++0x examples/countingsort.cpp -I. -o countingsort
 	strip countingsort
+
+lsdradixsort: examples/lsdradixsort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/lsdradixsort.cpp -I. -o lsdradixsort
+	strip lsdradixsort
 
 orderofmagnitudesort: examples/orderofmagnitudesort.cpp
 	g++ -O5 -Wall -std=gnu++0x examples/orderofmagnitudesort.cpp -I. -o orderofmagnitudesort
@@ -25,5 +29,5 @@ selectionsort: examples/selectionsort.cpp
 	strip selectionsort
 
 clean:
-	rm -f bubblesort combsort countingsort orderofmagnitudesort pigeonholesort selectionsort
+	rm -f bubblesort combsort countingsort lsdradixsort orderofmagnitudesort pigeonholesort selectionsort
 
