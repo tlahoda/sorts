@@ -25,7 +25,6 @@
 #define SORT_PIGEONHOLESORT_H
 
 #include <vector>
-#include <map>
 #include <list>
 #include <algorithm>
 
