@@ -28,6 +28,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <algorithm>
 #include <cmath>
 
 namespace sort {
@@ -48,7 +49,7 @@ namespace sort {
    * Specialization for unsigned int.
    */
   template<>
-  unsigned int count_digits<unsigned int> (const unsigned int& key) { return floor (log10 (abs (key))); };
+  unsigned int count_digits<unsigned int> (const unsigned int& key) { return floor (log10 (key)); };
 
   /**
    * Specialization for string.
@@ -84,12 +85,15 @@ namespace sort {
   void orderofmagnitudesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
     vector<map<KeyType, list<typename inIterator::value_type>>> buckets (maxKeyLength);
 
-    for (inIterator cur = begin; cur != end; ++cur)
-      buckets[count_digits (cur->first)][cur->first].push_back (*cur);
+    for_each (begin, end, [&buckets] (typename inIterator::value_type& ele) {
+      buckets[count_digits (ele.first)][ele.first].push_back (ele);
+    });
 
-    for (auto d = buckets.begin (), dEnd = buckets.end (); d != dEnd; ++d)
-      for (auto p = d->begin (), pEnd = d->end (); p != pEnd; ++p)
-        o.splice (o.end (), p->second);
+    for_each (buckets.begin (), buckets.end (), [&o] (map<KeyType, list<typename inIterator::value_type>>& d) {
+      for_each (d.begin (), d.end (),[&o] (typename map<KeyType, list<typename inIterator::value_type>>::value_type& p) {
+        o.splice (o.end (), p.second);
+      });
+    });
   }; //orderofmagnitudesort
 }; //sort
 
