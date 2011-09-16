@@ -24,12 +24,42 @@
 #ifndef SORT_ORDEROFMAGNITUDESORT_H
 #define SORT_ORDEROFMAGNITUDESORT_H
 
+#include <string>
 #include <vector>
 #include <map>
 #include <list>
+#include <cmath>
 
 namespace sort {
   using namespace std;
+
+  /**
+   * Counts the number of digits in an unsigned int.
+   */
+  struct IntDigitCounter {
+    /**
+     * Determines the number of digits of an integer key.
+     *
+     * \param number The key for which to determine the number of digits.
+     *
+     * \return The number of digits.
+     */
+    static unsigned int count (int number) { return floor (log10 (abs (number))); };
+  };
+
+  /**
+   * Counts the number of digits in a string.
+   */
+  struct StringDigitCounter {
+    /**
+     * Determines the number of digits of a string key.
+     *
+     * \param number The key for which to determine the number of digits.
+     *
+     * \return The number of digits.
+     */
+    static unsigned int count (const string& number) { return number.size () - 1; };
+  };
 
   /**
    * Sorts the elements from begin to end in ascending order maintaining stability
@@ -41,6 +71,9 @@ namespace sort {
    * Best case complexity is O(k + n) where k is the number of unique keys and n is
    * the number of elements to sort. This occurs when each key has a unique length.
    *
+   * Space complexity is O(k + n) where k is the number of unique keys and n is
+   * the number of elements to sort.
+   *
    * \tparam inIterator The type of the input iterator.
    * \tparam out The type of the output list.
    *
@@ -51,12 +84,12 @@ namespace sort {
    *
    * \return void.
    */
-  template<typename inIterator, typename out>
+  template<typename keyType, typename DigitCounter, typename inIterator, typename out>
   void orderofmagnitudesort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
-    vector<map<string, list<typename inIterator::value_type>>> buckets (maxKeyLength);
+    vector<map<keyType, list<typename inIterator::value_type>>> buckets (maxKeyLength);
 
     for (inIterator cur = begin; cur != end; ++cur)
-      buckets[cur->first.size () - 1][cur->first].push_back (*cur);
+      buckets[DigitCounter::count (cur->first)][cur->first].push_back (*cur);
 
     for (auto d = buckets.begin (), dEnd = buckets.end (); d != dEnd; ++d)
       for (auto p = d->begin (), pEnd = d->end (); p != pEnd; ++p)
