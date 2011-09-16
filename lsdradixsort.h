@@ -1,5 +1,5 @@
 /**
- * \file lsdradix.h, Contains a least significant digit radix sort implementation.
+ * \file lsdradixsort.h, Contains a least significant digit radix sort implementation.
  *
  * Copyright (C) 2011 Thomas P. Lahoda
  *
