@@ -1,33 +1,33 @@
-all: bubblesort combsort countingsort lsdradixsort orderofmagnitudesort pigeonholesort selectionsort
+all: bubble_sort comb_sort counting_sort lsd_radix_sort order_of_magnitude_sort pigeonhole_sort selection_sort
 
-bubblesort: examples/bubblesort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/bubblesort.cpp -I. -o bubblesort
-	strip bubblesort
+bubble_sort: examples/bubble_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/bubble_sort.cpp -I. -o bubble_sort
+	strip bubble_sort
 
-combsort: examples/combsort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/combsort.cpp -I. -o combsort
-	strip combsort
+comb_sort: examples/comb_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/comb_sort.cpp -I. -o comb_sort
+	strip comb_sort
 
-countingsort: examples/countingsort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/countingsort.cpp -I. -o countingsort
-	strip countingsort
+counting_sort: examples/counting_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/counting_sort.cpp -I. -o counting_sort
+	strip counting_sort
 
-lsdradixsort: examples/lsdradixsort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/lsdradixsort.cpp -I. -o lsdradixsort
-	strip lsdradixsort
+lsd_radix_sort: examples/lsd_radix_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/lsd_radix_sort.cpp -I. -o lsd_radix_sort
+	strip lsd_radix_sort
 
-orderofmagnitudesort: examples/orderofmagnitudesort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/orderofmagnitudesort.cpp -I. -o orderofmagnitudesort
-	strip orderofmagnitudesort
+order_of_magnitude_sort: examples/order_of_magnitude_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/order_of_magnitude_sort.cpp -I. -o order_of_magnitude_sort
+	strip order_of_magnitude_sort
 
-pigeonholesort: examples/pigeonholesort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/pigeonholesort.cpp -I. -o pigeonholesort
-	strip pigeonholesort
+pigeonhole_sort: examples/pigeonhole_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/pigeonhole_sort.cpp -I. -o pigeonhole_sort
+	strip pigeonhole_sort
 
-selectionsort: examples/selectionsort.cpp
-	g++ -O5 -Wall -std=gnu++0x examples/selectionsort.cpp -I. -o selectionsort
-	strip selectionsort
+selection_sort: examples/selection_sort.cpp
+	g++ -O5 -Wall -std=gnu++0x examples/selection_sort.cpp -I. -o selection_sort
+	strip selection_sort
 
 clean:
-	rm -f bubblesort combsort countingsort lsdradixsort orderofmagnitudesort pigeonholesort selectionsort
+	rm -f bubble_sort comb_sort counting_sort lsd_radix_sort order_of_magnitude_sort pigeonhole_sort selection_sort
 
