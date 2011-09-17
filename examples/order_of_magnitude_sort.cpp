@@ -44,9 +44,8 @@ int main (int argc, char** argv) {
   l.push_back (make_pair (20, "2c"));
   l.push_back (make_pair (600, "6b"));
 
-  list<pair<unsigned int, string>> res;
-  order_of_magnitude_sort<unsigned int> (l.begin (), l.end (), res, 3);
-  for (auto cur = res.begin (), end = res.end (); cur != end; ++cur)
+  order_of_magnitude_sort<unsigned int> (l.begin (), l.end (), l, 3);
+  for (auto cur = l.begin (), end = l.end (); cur != end; ++cur)
     cout << cur->second << endl;
 
   cout << endl << "string key:" << endl;
@@ -62,9 +61,8 @@ int main (int argc, char** argv) {
   l2.push_back (make_pair ("20", "2c"));
   l2.push_back (make_pair ("600", "6b"));
 
-  list<pair<string, string>> res2;
-  order_of_magnitude_sort<string> (l2.begin (), l2.end (), res2, 3);
-  for (auto cur = res2.begin (), end = res2.end (); cur != end; ++cur)
+  order_of_magnitude_sort<string> (l2.begin (), l2.end (), l2, 3);
+  for (auto cur = l2.begin (), end = l2.end (); cur != end; ++cur)
     cout << cur->second << endl;
 
   return 0;

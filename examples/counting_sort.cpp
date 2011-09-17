@@ -22,7 +22,6 @@
  * DEALINGS IN THE SOFTWARE.
  */
 #include <string>
-#include <list>
 #include <vector>
 #include <algorithm>
 #include <iostream>
@@ -33,21 +32,20 @@ int main (int argc, char** argv) {
   using namespace std;
   using namespace sort;
 
-  list<pair<int, string>> l2;
-  l2.push_back (make_pair (3, "3"));
-  l2.push_back (make_pair (2, "2a"));
-  l2.push_back (make_pair (6, "6c"));
-  l2.push_back (make_pair (1, "1"));
-  l2.push_back (make_pair (2, "2b"));
-  l2.push_back (make_pair (6, "6a"));
-  l2.push_back (make_pair (5, "5"));
-  l2.push_back (make_pair (4, "4"));
-  l2.push_back (make_pair (2, "2c"));
-  l2.push_back (make_pair (6, "6b"));
+  vector<pair<int, string>> v;
+  v.push_back (make_pair (3, "3"));
+  v.push_back (make_pair (2, "2a"));
+  v.push_back (make_pair (6, "6c"));
+  v.push_back (make_pair (1, "1"));
+  v.push_back (make_pair (2, "2b"));
+  v.push_back (make_pair (6, "6a"));
+  v.push_back (make_pair (5, "5"));
+  v.push_back (make_pair (4, "4"));
+  v.push_back (make_pair (2, "2c"));
+  v.push_back (make_pair (6, "6b"));
 
-  vector<pair<int, string>> res2;
-  counting_sort (l2.begin (), l2.end (), res2, 7);
-  for (auto cur = res2.begin (), end = res2.end (); cur != end; ++cur)
+  counting_sort (v.begin (), v.end (), v, 7);
+  for (auto cur = v.begin (), end = v.end (); cur != end; ++cur)
     cout << cur->second << endl;
   
   return 0;

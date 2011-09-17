@@ -63,18 +63,18 @@ namespace sort {
    * Sorts the elements from begin to end in ascending order maintaining stability
    * and splices the result onto the output list.
    *
-   * Typical and worst case complexity is O(k + n log k) where k is the number of
+   * Typical and worst case complexity is O(2k + n log k) where k is the number of
    * unique keys and n is the number of elements to sort.
    *
-   * Best case complexity is O(k + n) where k is the number of unique keys and n is
+   * Best case complexity is O(2k + n) where k is the number of unique keys and n is
    * the number of elements to sort. This occurs when each key has a unique length.
    *
    * Space complexity is O(k + n) where k is the number of unique keys and n is
    * the number of elements to sort.
    *
    * \tparam keyType The type of the key.
-   * \tparam inIterator The type of the input iterator.
-   * \tparam out The type of the output list.
+   * \tparam iterator The type of the input iterator.
+   * \tparam Container The type of the output containe.
    *
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
@@ -83,19 +83,21 @@ namespace sort {
    *
    * \return void.
    */
-  template<typename KeyType, typename inIterator, typename out>
-  void order_of_magnitude_sort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength) {
-    vector<map<KeyType, list<typename inIterator::value_type>>> buckets (maxKeyLength);
+  template<typename KeyType, typename iterator, typename Container>
+  void order_of_magnitude_sort (const iterator& begin, const iterator& end, Container& out, unsigned int maxKeyLength) {
+    vector<map<KeyType, list<typename iterator::value_type>>> buckets (maxKeyLength);
 
-    for_each (begin, end, [&buckets] (typename inIterator::value_type& ele) {
+    for_each (begin, end, [&buckets] (typename iterator::value_type& ele) {
       buckets[count_digits (ele.first)][ele.first].push_back (ele);
     });
 
-    for_each (buckets.begin (), buckets.end (), [&o] (map<KeyType, list<typename inIterator::value_type>>& d) {
-      for_each (d.begin (), d.end (),[&o] (typename map<KeyType, list<typename inIterator::value_type>>::value_type& p) {
-        o.splice (o.end (), p.second);
+    Container res;
+    for_each (buckets.begin (), buckets.end (), [&res] (map<KeyType, list<typename iterator::value_type>>& d) {
+      for_each (d.begin (), d.end (),[&res] (typename map<KeyType, list<typename iterator::value_type>>::value_type& p) {
+        res.splice (res.end (), p.second);
       });
     });
+    out.swap (res);
   }; //order_of_magnitude_sort
 }; //sort
 

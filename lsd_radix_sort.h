@@ -34,44 +34,44 @@ namespace sort {
 
   /**
    * Sorts the elements from begin to end in ascending order maintaining stability
-   * and splices the result onto the output list.
+   * and places the result into the output container.
    *
-   * Complexity is O(k*(n + d)) where k is the maximum number of digits a key may
+   * Complexity is O(d + k(n + d)) where k is the maximum number of digits a key may
    * have, n is the number of elements to be sorted, and d is the radix.
    *
-   * \tparam inIterator The type of the input iterator.
-   * \tparam out The type of the output list.
+   * \tparam iterator The type of the input iterator.
+   * \tparam Container The type of the output container.
    *
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
-   * \param o The output list.
+   * \param out The output container.
    * \param maxKeyLength The maximum length a key can have.
    * \param radix The radix of the keys.
    * \param asciiOffset The offset from 0 of the start of the keys in ascii.
    *
    * \return void.
    */
-  template<typename inIterator, typename out>
-  void lsd_radix_sort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKeyLength, unsigned int radix = 10, unsigned int asciiOffset = 48) {
-    inIterator first = begin;
-    inIterator last = end;
+  template<typename iterator, typename Container>
+  void lsd_radix_sort (const iterator& begin, const iterator& end, Container& out, unsigned int maxKeyLength, unsigned int radix = 10, unsigned int asciiOffset = 48) {
+    iterator first = begin;
+    iterator last = end;
 
+    vector<list<typename iterator::value_type>> buckets (radix);
     for (int i = maxKeyLength - 1; i >= 0; --i) {
-      vector<list<typename inIterator::value_type>> buckets (radix);
-
       unsigned int position = maxKeyLength - i;
-      for_each (first, last, [&] (typename inIterator::value_type& ele) {
+      for_each (first, last, [&] (typename iterator::value_type& ele) {
         unsigned int keyEnd = ele.first.size ();
         buckets[(position > keyEnd) ? 0 : ele.first[keyEnd - position] - asciiOffset].push_back (ele);
       });
 
-      o.clear ();
-      for_each (buckets.begin (), buckets.end (), [&o] (list<typename inIterator::value_type>& l) {
-        o.splice (o.end (), l);
+      Container res;
+      for_each (buckets.begin (), buckets.end (), [&res] (list<typename iterator::value_type>& l) {
+        res.splice (res.end (), l);
       });
-
-      first = o.begin ();
-      last = o.end ();
+      out.swap (res);
+      
+      first = out.begin ();
+      last = out.end ();
     }
   }; //lsd_radix_sort
 }; //sort

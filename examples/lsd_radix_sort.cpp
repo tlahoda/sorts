@@ -43,9 +43,8 @@ int main (int argc, char** argv) {
   l.push_back (make_pair ("20", "2c"));
   l.push_back (make_pair ("600", "6b"));
 
-  list<pair<string, string>> res;
-  lsd_radix_sort (l.begin (), l.end (), res, 3);
-  for (auto cur = res.begin (), end = res.end (); cur != end; ++cur)
+  lsd_radix_sort (l.begin (), l.end (), l, 3);
+  for (auto cur = l.begin (), end = l.end (); cur != end; ++cur)
     cout << cur->second << endl;
   
   return 0;

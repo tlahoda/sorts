@@ -33,7 +33,7 @@ namespace sort {
 
   /**
    * Sorts the elements from begin to end in ascending order maintaining stability
-   * and splices the result onto the output list. 
+   * and places the result into the output container. 
    *
    * Complexity is O(2k + n) where k is the number of unique keys and n is the
    * number of elements to sort.
@@ -42,26 +42,28 @@ namespace sort {
    * the number of elements to be sorted.
    *
    * \tparam iterator The type of the input iterator.
-   * \tparam out The type of the output list.
+   * \tparam Container The type of the output container.
    *
    * \param begin The beginning of the elements.
    * \param end The end of the elements.
-   * \param o The output list.
+   * \param out The output list.
    * \param maxKey The maximum value a key can have.
    *
    * \return void.
    */
-  template<typename iterator, typename out>
-  void pigeonhole_sort (const iterator& begin, const iterator& end, out& o, unsigned int maxKey) {
+  template<typename iterator, typename Container>
+  void pigeonhole_sort (const iterator& begin, const iterator& end, Container& out, unsigned int maxKey) {
     vector<list<typename iterator::value_type>> buckets (maxKey);
 
     for_each (begin, end, [&buckets] (typename iterator::value_type& ele) {
       buckets[ele.first - 1].push_back (ele);
     });
 
-    for_each (buckets.begin (), buckets.end (), [&o] (list<typename iterator::value_type>& l) {
-      o.splice (o.end (), l);
+    Container res;
+    for_each (buckets.begin (), buckets.end (), [&res] (list<typename iterator::value_type>& l) {
+      res.splice (res.end (), l);
     });
+    out.swap (res);
   }; //pigeonhole_sort
 }; //sort
 
