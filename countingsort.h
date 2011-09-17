@@ -25,6 +25,7 @@
 #define SORT_COUNTINGSORT_H
 
 #include <vector>
+#include <algorithm>
 
 namespace sort {
   using namespace std;
@@ -49,8 +50,9 @@ namespace sort {
   template<typename inIterator, typename out>
   void countingsort (const inIterator& begin, const inIterator& end, out& o, unsigned int maxKey) {
     vector<unsigned int> counts (maxKey, 0);
-    for (auto cur = begin; cur != end; ++cur)
-      ++counts[cur->first];
+    for_each (begin, end, [&counts] (typename inIterator::value_type& ele) {
+      ++counts[ele.first];
+    });
 
     unsigned int offset = o.size ();
     unsigned int pos = 0;
@@ -61,8 +63,9 @@ namespace sort {
     }
 
     o.resize (offset + distance (begin, end));
-    for (auto cur = begin; cur != end; ++cur)
-      o[counts[cur->first]++] = *cur;
+    for_each (begin, end, [&o, &counts] (typename inIterator::value_type& ele) {
+      o[counts[ele.first]++] = ele;
+    });
 
   }; //countingsort
 }; //sort
