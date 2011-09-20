@@ -1,5 +1,5 @@
 /**
- * \file selection_sort.js, Contains a selection_sort implementation.
+ * \file lsd_radix_sort.js, Contains a lsd_radix_sort implementation.
  *
  * Copyright (C) 20011 Thomas P. Lahoda
  *

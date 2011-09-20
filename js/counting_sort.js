@@ -1,5 +1,5 @@
 /**
- * \file selection_sort.js, Contains a selection_sort implementation.
+ * \file counting_sort.js, Contains a counting_sort implementation.
  *
  * Copyright (C) 20011 Thomas P. Lahoda
  *

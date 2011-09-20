@@ -1,5 +1,5 @@
 /**
- * \file selection_sort.js, Contains a selection_sort implementation.
+ * \file order_of_magnitude_sort.js, Contains a order_of_magnitude_sort implementation.
  *
  * Copyright (C) 20011 Thomas P. Lahoda
  *

@@ -1,5 +1,5 @@
 /**
- * \file selection_sort.js, Contains a selection_sort implementation.
+ * \file bubble_sort.js, Contains a bubble_sort implementation.
  *
  * Copyright (C) 20011 Thomas P. Lahoda
  *
