@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../counting_sort.js"></script>
+  </head>
+  <body onload="ready ();">
+    <script type="text/javascript">
+      function pair (first, second) {
+        this.first = first;
+        this.second = second;
+      }
+
+      function ready () {
+        var list = [new pair (30, "3"),
+                    new pair (20, "2a"),
+                    new pair (600, "6c"),
+                    new pair (1, "1"),
+                    new pair (20, "2b"),
+                    new pair (600, "6a"),
+                    new pair (500, "5"),
+                    new pair (40, "4"),
+                    new pair (20, "2c"),
+                    new pair (600, "6b")];
+        alert (list + " --- sorts to");
+        alert (order_of_magnitude_sort (list));
+      }
+    </script>
+  </body>
+</html>
+
