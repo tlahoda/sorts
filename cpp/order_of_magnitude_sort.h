@@ -63,11 +63,12 @@ namespace sort {
    * Sorts the elements from begin to end in ascending order maintaining stability
    * and splices the result onto the output list.
    *
-   * Typical and worst case complexity is O(2k + n log k) where k is the number of
+   * Typical and worst case complexity is O(k + n log k) where k is the number of
    * unique keys and n is the number of elements to sort.
    *
-   * Best case complexity is O(2k + n) where k is the number of unique keys and n is
-   * the number of elements to sort. This occurs when each key has a unique length.
+   * Best case complexity is O(k + n) where k is the number of unique keys and n is
+   * the number of elements to sort. This occurs when each key has a unique order of
+   * magnitude.
    *
    * Space complexity is O(k + n) where k is the number of unique keys and n is
    * the number of elements to sort.

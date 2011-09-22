@@ -36,7 +36,7 @@ namespace sort {
    * Sorts the elements from begin to end in ascending order maintaining stability
    * and places the result into the output container.
    *
-   * Complexity is O(d + k(n + d)) where k is the maximum number of digits a key may
+   * Complexity is O(kn/d) where k is the maximum number of digits a key may
    * have, n is the number of elements to be sorted, and d is the radix.
    *
    * \tparam iterator The type of the input iterator.

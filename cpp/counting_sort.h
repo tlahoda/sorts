@@ -34,7 +34,7 @@ namespace sort {
    * Sorts the elements from begin to end in ascending order maintaining stability
    * and places the result into the output container. 
    *
-   * Complexity is O(2k + 3n) where k is the number of unique keys and n is the number
+   * Complexity is O(k + n) where k is the number of unique keys and n is the number
    * of elements to sort.
    *
    * \tparam iterator The type of the input iterator.
